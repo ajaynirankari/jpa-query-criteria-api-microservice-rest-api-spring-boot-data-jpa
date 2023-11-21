@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.query.criteria.JpaDerivedRoot;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -78,12 +77,12 @@ class EmployeeController {
 
     @GetMapping("/findByNameAndAge")
     public List<Employee> findByNameAndAge(@RequestParam String name, @RequestParam int age) {
-        return repo.findByNameAndAge(name,age);
+        return repo.findByNameAndAge(name, age);
     }
 
     @GetMapping("/findByNameOrAge")
     public List<Employee> findByNameOrAge(@RequestParam String name, @RequestParam int age) {
-        return repo.findByNameOrAge(name,age);
+        return repo.findByNameOrAge(name, age);
     }
 
     @GetMapping("/allSQLQuery")
@@ -98,7 +97,7 @@ class EmployeeController {
 
     @GetMapping("/allSQLQueryWhere")
     public List<Employee> allSQLQueryWhere(@RequestParam int firstId, @RequestParam int secondId) {
-        return repo.allSQLQueryWhere(firstId,secondId);
+        return repo.allSQLQueryWhere(firstId, secondId);
     }
 
     @GetMapping("/allJavaQueryWhere")
@@ -119,9 +118,9 @@ interface EmployeeRepo extends JpaRepository<Employee, Long> {
 
     List<Employee> findBySalaryGreaterThan(int salary);
 
-    List<Employee> findByNameAndAge(String name,int age);
+    List<Employee> findByNameAndAge(String name, int age);
 
-    List<Employee> findByNameOrAge(String name,int age);
+    List<Employee> findByNameOrAge(String name, int age);
 
     @Query("SELECT e FROM Employee e")
     List<Employee> allJavaQuery();
